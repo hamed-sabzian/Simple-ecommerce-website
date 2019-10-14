@@ -14,7 +14,7 @@ class HomeController extends Controller
             //Check if there is latest products in cache storage return it 
             //otherwise query from database and add it to cache storage
             $products = Cache::rememberForever('latest_products', function() {
-                return Product::orderBy('id', 'desc')->take(6)->get();
+                return Product::orderBy('id', 'desc')->take(config('constants.PER_PAGE'))->get();
             });
 
             return view('welcome',['products'=>$products]);

@@ -16,7 +16,7 @@ class ProductController extends Controller
             //Check if there is products list page in cache storage, return it 
             //otherwise query from database and add it to cache storage
             $products = Cache::rememberForever('products_list_page_'.$page, function() {
-                return Product::paginate(6);
+                return Product::paginate(config('constants.PER_PAGE'));
             });
 
             return view('products.index',['products'=>$products]);

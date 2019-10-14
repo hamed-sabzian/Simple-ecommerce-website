@@ -12,7 +12,7 @@ class ProductSearchService
     {
         $query = $this->applyFiltersFromRequest($filters, (new Product())->newQuery());
 
-        return $query->paginate(6);
+        return $query->paginate(config('constants.PER_PAGE'));
     }
     
     //Apply filters for parameters in search
