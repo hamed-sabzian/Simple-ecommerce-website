@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\OptionType;
 use Illuminate\Database\Seeder;
 
 class ProductsTableSeeder extends Seeder
@@ -12,11 +13,22 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         factory(App\Models\Product::class, 45)->create()->each(function ($product) {
-        	$optionTypes = [];
-        	$optionTypes[] = factory(App\Models\OptionType::class)->create(['name'=>'color'])->id;
-        	$optionTypes[] = factory(App\Models\OptionType::class)->create(['name'=>'size'])->id;
-    	    $product->optionTypes()->attach($optionTypesID);
-    	    $product->productVariants()->save(factory(App\Post::class)->make());
-    	});
+
+            $optionTypesID = OptionType::where('name','color')->orWhere('name','size')->pluck('id')->toArray();
+
+            $product->optionTypes()->attach($optionTypesID);
+
+            $product->productVariants()->saveMany(
+                [
+                    factory(App\Models\ProductVariant::class)->make(['price'=>300000]),
+            
+                    factory(App\Models\ProductVariant::class)->make(['price'=>350000])
+                
+                ]);
+
+        });
+
     }
+
+
 }

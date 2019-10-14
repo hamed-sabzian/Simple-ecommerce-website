@@ -11,10 +11,10 @@ class OptionType extends Model
     protected $fillable = ['name'];
 
     public function products(){
-    	return $this->belongsToMany('Product','product_option_types');
+    	return $this->belongsToMany(Product::class,'product_option_types');
     }
 
     public function optionValues(){
-    	return $this->hasMany('OptionValue');
+    	return $this->hasMany(OptionValue::class);
     }
 }

@@ -11,7 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/','HomeController@index');
+Route::get('/products','ProductController@index')->name('products');
+Route::get('/search','SearchController@index')->name('search');

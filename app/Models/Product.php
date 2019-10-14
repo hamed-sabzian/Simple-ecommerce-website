@@ -12,10 +12,10 @@ class Product extends Model
 
     public function optionTypes()
     {
-        return $this->belongsToMany('OptionType','product_option_types');
+        return $this->belongsToMany(OptionType::class,'product_option_types');
     }
 
     public function productVariants(){
-    	return $this->hasMany('ProductVariant');
+    	return $this->hasMany(ProductVariant::class);
     }
 }
