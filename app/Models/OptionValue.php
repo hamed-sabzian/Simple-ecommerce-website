@@ -10,11 +10,13 @@ class OptionValue extends Model
 {
     protected $fillable = ['name'];
 
-    public function optionType(){
+    public function optionType()
+    {
     	return $this->belongsTo(OptionType::class);
     }
 
-    public function productVariants(){
+    public function productVariants()
+    {
     	return $this->belongsToMany(ProductVariant::class,'option_value_variants');
     }
 }

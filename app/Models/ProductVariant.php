@@ -10,11 +10,13 @@ class ProductVariant extends Model
 {
     protected $fillable = ['product_id','price'];
 
-    public function product(){
+    public function product()
+    {
     	return $this->belongsTo(Product::class);
     }
 
-    public function optionValues(){
+    public function optionValues()
+    {
     	return $this->belongsToMany(OptionValue::class,'option_value_variants');
     }
 }

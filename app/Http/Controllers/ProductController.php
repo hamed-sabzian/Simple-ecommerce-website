@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Request;
 
 class ProductController extends Controller
 {
-    public function index(){
-
+    public function index()
+    {
         try {
             $page = Request::input('page', 1);
 

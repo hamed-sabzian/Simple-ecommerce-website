@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
-    public function index(){
-
+    public function index()
+    {
         try {
             
             //Check if there is latest products in cache storage return it 

@@ -7,8 +7,8 @@ use App\Services\SearchServices\ProductSearchService;
 
 class SearchController extends Controller
 {
-    public function index(Request $request){
-
+    public function index(Request $request)
+    {
         try {
 
             $productSearchService = resolve(ProductSearchService::class);
